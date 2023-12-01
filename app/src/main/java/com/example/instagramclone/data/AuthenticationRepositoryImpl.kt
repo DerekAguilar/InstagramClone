@@ -70,13 +70,13 @@ class AuthenticationRepositoryImpl @Inject constructor(
             emit(Response.Loading)
             auth.createUserWithEmailAndPassword(email,password).addOnSuccessListener {
                 operationSuccessful=true
-            }
+            }.await()
             if(operationSuccessful){
                 val userid=auth.currentUser?.uid!!
                 val obj= User(userName=userName,userId=userid,password=password,email=email)
-                firestore.collection(Constants.COLLECTION_NAME_USERS).document(userid).set(obj).addOnSuccessListener {
-
-                }.await()
+                firestore.collection(Constants.COLLECTION_NAME_USERS).document(userid)
+                    .set(obj).addOnSuccessListener {
+                }
                 emit(Response.Success(operationSuccessful))
             }
             else{
