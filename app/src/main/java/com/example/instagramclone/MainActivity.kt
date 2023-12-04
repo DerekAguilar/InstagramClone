@@ -15,7 +15,7 @@ import com.example.instagramclone.presentation.Authentication.AuthenticationView
 import com.example.instagramclone.presentation.Authentication.LoginScreen
 import com.example.instagramclone.presentation.Authentication.SignUpScreen
 import com.example.instagramclone.presentation.Main.FeedsScreen
-import com.example.instagramclone.presentation.Main.ProfileScreen
+import com.example.instagramclone.presentation.Main.Profile.ProfileScreen
 import com.example.instagramclone.presentation.Main.SearchScreen
 import com.example.instagramclone.presentation.SplashScreen
 import com.example.instagramclone.ui.theme.InstagramCloneTheme
