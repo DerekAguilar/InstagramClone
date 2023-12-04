@@ -4,16 +4,15 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.instagramclone.domain.use_cases.AuthenticationUseCases
+import com.example.instagramclone.domain.use_cases.AuthenticationUseCases.AuthenticationUseCases
 import com.example.instagramclone.util.Response
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class AuthenticationViewModel @Inject constructor(
-    private val authUseCases:AuthenticationUseCases
+    private val authUseCases: AuthenticationUseCases
 ):ViewModel(){
     val isUserAuthenticated get()=authUseCases.isUserAuthenticated()
 

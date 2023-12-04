@@ -6,7 +6,6 @@ import com.example.instagramclone.util.Constants
 import com.example.instagramclone.util.Response
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -24,7 +23,7 @@ class AuthenticationRepositoryImpl @Inject constructor(
         return auth.currentUser!=null
     }
 
-    @ExperimentalCoroutinesApi
+
     override fun getFirebaseAuthState(): Flow<Boolean> = callbackFlow {
         val authStateListener=FirebaseAuth.AuthStateListener {
             trySend(auth.currentUser==null)

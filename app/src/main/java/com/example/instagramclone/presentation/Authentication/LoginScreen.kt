@@ -16,11 +16,11 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
@@ -97,9 +97,11 @@ fun LoginScreen(navController: NavHostController, viewModel: AuthenticationViewM
                     }
                     is Response.Success ->{
                         if(response.data){
-                            navController.navigate(Screens.FeedsScreen.route){
-                                popUpTo(Screens.LoginScreen.route){
-                                    inclusive = true
+                            LaunchedEffect(key1 = true) {
+                                navController.navigate(Screens.ProfileScreen.route) {
+                                    popUpTo(Screens.LoginScreen.route) {
+                                        inclusive = true
+                                    }
                                 }
                             }
                         }
@@ -112,10 +114,11 @@ fun LoginScreen(navController: NavHostController, viewModel: AuthenticationViewM
                     }
                 }
             }
-            Text(text = "New User? Sign Up", color= Color.Blue,modifier=Modifier.padding(8.dp)
+            Text(text = "New User? Sign Up", color= Color.Blue,modifier= Modifier
+                .padding(8.dp)
                 .clickable {
-                    navController.navigate(route=Screens.SignUpScreen.route){
-                        launchSingleTop=true
+                    navController.navigate(route = Screens.SignUpScreen.route) {
+                        launchSingleTop = true
                     }
                 })
         }
